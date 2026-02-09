@@ -1,0 +1,9 @@
+services:
+  postgres:
+    image: 'postgres:latest'
+    environment:
+      - 'POSTGRES_DB=planing'
+      - 'POSTGRES_PASSWORD=chedly'
+      - 'POSTGRES_USER=chedly'
+    ports:
+      - '5432'
