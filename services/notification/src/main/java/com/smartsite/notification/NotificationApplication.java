@@ -1,13 +1,13 @@
-package com.smartsite.planing;
+package com.smartsite.notification;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class PlaningApplication {
+public class NotificationApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(PlaningApplication.class, args);
+		SpringApplication.run(NotificationApplication.class, args);
 	}
-	
+
 }
