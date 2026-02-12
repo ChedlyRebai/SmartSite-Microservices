@@ -2,12 +2,18 @@ package com.smartsite.planing.service;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.smartsite.planing.domain.entity.Project;
 import com.smartsite.planing.repository.ProjectRepository;
 
+import lombok.RequiredArgsConstructor;
+
+@Service
+@RequiredArgsConstructor
 public class ProjectService implements IProject {
 
-    private ProjectRepository projectRepository;
+    private final ProjectRepository projectRepository;
 
     @Override
     public Project getProjectById(Long id) {

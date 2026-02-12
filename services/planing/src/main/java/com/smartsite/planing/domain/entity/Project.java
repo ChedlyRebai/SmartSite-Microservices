@@ -28,7 +28,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name="tasks")
+@Table(name="projects")
 public class Project {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
