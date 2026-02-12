@@ -4,6 +4,8 @@ import java.math.BigDecimal;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.cglib.core.Local;
 
@@ -14,6 +16,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -37,8 +40,6 @@ public class Project {
     @Column(nullable = false)
     private String name;
 
-
-
     private String description;
     private LocalDate plannedStart;
     private LocalDate plannedEnd;
@@ -53,6 +54,9 @@ public class Project {
     private Long clientId;
     private Long responsableId;
 
-    
+    @OneToMany(mappedBy = "project")
+    private List<Task> tasks = new ArrayList<>();
+
+        
     
 }
