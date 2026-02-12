@@ -8,6 +8,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.smartsite.planing.domain.enums.TaskSTatus;
 
 import jakarta.persistence.CascadeType;
@@ -29,7 +30,7 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
@@ -37,6 +38,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @AllArgsConstructor
+@NoArgsConstructor
 public class Task {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -59,6 +61,7 @@ public class Task {
     private BigDecimal progress = BigDecimal.ZERO;
     private String description;
 
+    @JsonIgnore
     @ManyToMany
     @JoinTable(name = "task_dependencies", joinColumns = @JoinColumn(name = "task_id"), inverseJoinColumns = @JoinColumn(name = "predecessor_id"))
     private Set<Task> predecessors = new HashSet<>();
