@@ -1,5 +1,7 @@
 package com.smartsite.planing.service;
 
+import java.util.List;
+
 import com.smartsite.planing.domain.entity.Project;
 import com.smartsite.planing.repository.ProjectRepository;
 
@@ -17,7 +19,7 @@ public class ProjectService implements IProject {
     public void DeleteProject(Long id) {
         this.projectRepository.deleteById(id);
     }
-
+    
     @Override
     public Project updateProject(Project project, Long id) {
         Project existing = this.getProjectById(id);
@@ -35,6 +37,11 @@ public class ProjectService implements IProject {
     @Override
     public Project AddProject(Project project) {
         return this.projectRepository.save(project);
+    }
+
+    @Override
+    public List<Project> getAll() {
+        return this.projectRepository.findAll();
     }
 
 }
