@@ -55,5 +55,11 @@ public class ProjectController {
     }
 
 
+    @GetMapping("/{id}")
+    public ResponseEntity<Project> getProjectById(@PathVariable Long id) {
+        return ResponseEntity.ok(this.projectService.getProjectById(id));
+    }
+    
+
     
 }
