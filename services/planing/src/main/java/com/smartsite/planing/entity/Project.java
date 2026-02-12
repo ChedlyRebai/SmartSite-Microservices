@@ -1,6 +1,7 @@
-
+package com.smartsite.planing.entity;
 
 import java.math.BigDecimal;
+import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
@@ -14,8 +15,17 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Table(name="tasks")
 public class Project {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,13 +34,18 @@ public class Project {
     // @ManyToOne(fetch = FetchType.LAZY)
 
     // private Task task;
+    @Column(nullable = false)
     private String name;
 
+
+
+    private String description;
     private LocalDate plannedStart;
     private LocalDate plannedEnd;
     private LocalDate actualStart;
     private LocalDate acctualEnd;
 
+    
     private BigDecimal estimateBudget;
     private BigDecimal actualBudget;
 
