@@ -1,8 +1,13 @@
 package com.smartsite.planing.service;
 
+import java.util.List;
+
+import com.smartsite.planing.domain.entity.ResourceNeed;
+
 public interface IResourceNeed {
-    ResourceNeedService addRessource(ResourceNeedService resourceNeed);
-    void DeleteRessource(long id);
-    ResourceNeedService updateResourceNeed(ResourceNeedService ressourceNeed,Long id);
-    ResourceNeedService getById(Long id);
+    ResourceNeed addRessource(ResourceNeed resourceNeed);
+    void DeleteRessource(Long id);
+    ResourceNeed updateResourceNeed(ResourceNeed ressourceNeed,Long id);
+    ResourceNeed getById(Long id);
+    List<ResourceNeed> getByTask(Long taskId);
 }
