@@ -1,8 +1,22 @@
 package com.smartsite.planing.service;
 
-import com.smartsite.planing.domain.entity.Task;
+import org.springframework.stereotype.Service;
 
+import com.smartsite.planing.domain.entity.Task;
+import com.smartsite.planing.repository.TaskRepository;
+
+import lombok.RequiredArgsConstructor;
+
+
+@RequiredArgsConstructor
+@Service
 public class TaskService implements ITaskService {
+
+    private TaskRepository taskRepository;
+
+    public TaskService(TaskRepository taskRepository){
+        this.taskRepository=taskRepository;
+    }
 
     @Override
     public void DeleteTAsk(Long id) {

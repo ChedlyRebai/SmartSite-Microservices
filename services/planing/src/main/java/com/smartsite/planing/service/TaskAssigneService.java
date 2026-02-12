@@ -1,9 +1,17 @@
 package com.smartsite.planing.service;
 
 import org.apache.kafka.streams.processor.assignment.KafkaStreamsAssignment.AssignedTask;
+import org.springframework.stereotype.Service;
 
-public class TaskAssigne implements ITaskAssigne {
+import com.smartsite.planing.repository.TaskAssigneRepository;
+import com.smartsite.planing.repository.TaskRepository;
 
+import lombok.RequiredArgsConstructor;
+@RequiredArgsConstructor
+@Service
+public class TaskAssigneService implements ITaskAssigne {
+
+    private TaskAssigneRepository taskAssignRepository;
     @Override
     public void deleteAssigneTAsk(Long id) {
         // TODO Auto-generated method stub

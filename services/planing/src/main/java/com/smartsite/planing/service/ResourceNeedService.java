@@ -1,9 +1,19 @@
 package com.smartsite.planing.service;
 
-public class ResourceNeed implements IResourceNeed {
+import org.springframework.stereotype.Service;
 
+import com.smartsite.planing.repository.ResourcesREpository;
+
+import lombok.RequiredArgsConstructor;
+
+
+@RequiredArgsConstructor
+@Service
+public class ResourceNeedService implements IResourceNeed {
+
+    private ResourcesREpository resourcesREpository; 
     @Override
-    public ResourceNeed addRessource(ResourceNeed resourceNeed) {
+    public ResourceNeedService addRessource(ResourceNeedService resourceNeed) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'addRessource'");
     }
@@ -15,13 +25,13 @@ public class ResourceNeed implements IResourceNeed {
     }
 
     @Override
-    public ResourceNeed updateResourceNeed(ResourceNeed ressourceNeed, Long id) {
+    public ResourceNeedService updateResourceNeed(ResourceNeedService ressourceNeed, Long id) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'updateResourceNeed'");
     }
 
     @Override
-    public ResourceNeed getById(Long id) {
+    public ResourceNeedService getById(Long id) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'getById'");
     }
