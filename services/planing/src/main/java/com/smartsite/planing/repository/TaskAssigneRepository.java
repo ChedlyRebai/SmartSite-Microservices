@@ -8,6 +8,7 @@ import com.smartsite.planing.domain.entity.TaskAssigne;
 
 public interface TaskAssigneRepository extends JpaRepository<TaskAssigne, Long> {
 
+    
     List<TaskAssigne> findByTaskId(Long taskId);
 
     List<TaskAssigne> findByWorkerId(Long workerId);
