@@ -24,7 +24,6 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-
 @AllArgsConstructor
 public class TaskAssigne {
     @Id
@@ -36,7 +35,6 @@ public class TaskAssigne {
     private Long workerId;
     private Long teamId;
     
-
     @Column(precision = 4 , scale = 2)
     private BigDecimal assignedHOurs;
 

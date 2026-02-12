@@ -9,9 +9,9 @@ import java.util.List;
 import java.util.Set;
 
 import jakarta.persistence.CascadeType;
-import jakarta.persistence.CollectionTable;
+
 import jakarta.persistence.Column;
-import jakarta.persistence.ElementCollection;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -20,12 +20,14 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
+
 import lombok.Setter;
 
 @Entity
@@ -37,7 +39,6 @@ public class Task {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
 
     @Column(nullable = false)
     private String title;
@@ -54,20 +55,16 @@ public class Task {
 
     @Enumerated(EnumType.STRING)
     private TaskSTatus  status= TaskSTatus.PLANNED;
-
     private BigDecimal progress= BigDecimal.ZERO;
-
     private String description;
 
+    @ManyToMany
+    @JoinTable(
+        name = "task_dependencies",
+        joinColumns = @JoinColumn(name = "task_id"),
+        inverseJoinColumns = @JoinColumn(name = "predecessor_id")
+    )
     private Set<Task> predecessors = new HashSet<>();
-
-    @ElementCollection
-    @CollectionTable(name = "task_ressource_needs" , joinColumns = @JoinColumn(name = "task_id"))
-    
-    
-   
-    // @OneToMany(M)
-
     @OneToMany(mappedBy = "task",cascade = CascadeType.ALL)
     private List<ResourceNeed> ressources = new ArrayList<>();
 
@@ -75,6 +72,6 @@ public class Task {
     private List<TaskAssigne> assignments = new ArrayList<>();
     
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "project" , nullable = false)
+    @JoinColumn(name = "project_id" , nullable = false)
     private Project project;
 }

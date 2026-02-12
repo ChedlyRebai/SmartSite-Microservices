@@ -40,8 +40,6 @@ public class Project {
     @Column(nullable = false)
     private String name;
 
-
-
     private String description;
     private LocalDate plannedStart;
     private LocalDate plannedEnd;
@@ -56,9 +54,9 @@ public class Project {
     private Long clientId;
     private Long responsableId;
 
-    @OneToMany()
+    @OneToMany(mappedBy = "project")
     private List<Task> tasks = new ArrayList<>();
 
-    
+        
     
 }
