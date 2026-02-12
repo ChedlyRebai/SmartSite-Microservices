@@ -9,8 +9,8 @@ import com.smartsite.planing.repository.ResourcesREpository;
 
 import lombok.RequiredArgsConstructor;
 
-@RequiredArgsConstructor
 @Service
+@RequiredArgsConstructor
 public class ResourceNeedService implements IResourceNeed {
 
     private ResourcesREpository resourcesREpository;
