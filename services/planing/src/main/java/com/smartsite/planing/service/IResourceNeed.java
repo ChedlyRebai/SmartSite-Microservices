@@ -1,5 +1,5 @@
 package com.smartsite.planing.service;
 
-public class IResourceNeed {
+public interface IResourceNeed {
     
 }
