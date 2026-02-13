@@ -17,6 +17,7 @@ public class ResourceNeedService implements IResourceNeed {
 
     private ResourcesREpository resourcesREpository;
     private ITaskService taskRepository;
+   
     @Override
     public ResourceNeed addRessource(ResourceNeed resourceNeed,Long id) {
         Task task=this.taskRepository.getTaskById(id);

@@ -27,7 +27,6 @@ public class TaskAssignController {
     private final ITaskAssigne taskAssigneService;
     public TaskAssignController(ITaskAssigne taskAssigneService) {
         this.taskAssigneService = taskAssigneService;
-
     }
 
     @PostMapping("/{taskId}")
@@ -41,11 +40,6 @@ public class TaskAssignController {
     }
 
     
-    
-    
 
-
-
-    
     
 }

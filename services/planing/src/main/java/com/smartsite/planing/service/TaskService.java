@@ -29,7 +29,6 @@ public class TaskService implements ITaskService {
     @Override
     public Task updateTask(Task task, Long id) {
         Task existing = this.getTaskById(id);
-
         existing.setTitle(task.getTitle());
         existing.setDescription(task.getDescription());
         existing.setStatus(task.getStatus());
