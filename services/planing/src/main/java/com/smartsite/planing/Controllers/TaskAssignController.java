@@ -23,7 +23,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping("/api/taskassigne")
 @CrossOrigin(origins = "*")
 public class TaskAssignController {
-    
     private final ITaskAssigne taskAssigneService;
     public TaskAssignController(ITaskAssigne taskAssigneService) {
         this.taskAssigneService = taskAssigneService;

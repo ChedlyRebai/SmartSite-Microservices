@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 import com.smartsite.planing.domain.entity.ResourceNeed;
 import com.smartsite.planing.domain.entity.Task;
 import com.smartsite.planing.repository.ResourcesREpository;
-import com.smartsite.planing.repository.TaskRepository;
 
 import lombok.RequiredArgsConstructor;
 
@@ -15,9 +14,8 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class ResourceNeedService implements IResourceNeed {
 
-    private ResourcesREpository resourcesREpository;
-    private ITaskService taskRepository;
-   
+    private final ResourcesREpository resourcesREpository;
+    private final ITaskService taskRepository;
     @Override
     public ResourceNeed addRessource(ResourceNeed resourceNeed,Long id) {
         Task task=this.taskRepository.getTaskById(id);

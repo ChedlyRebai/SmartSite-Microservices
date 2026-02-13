@@ -10,9 +10,7 @@ import com.smartsite.planing.domain.entity.ResourceNeed;
 import com.smartsite.planing.service.IResourceNeed;
 
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
-import lombok.NoArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 
 @RestController
@@ -20,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 public class ResourceNeedController {
     
-    private final IResourceNeed resourceNeedService;
+    private  IResourceNeed resourceNeedService;
     public ResourceNeedController(IResourceNeed resourceNeedService) {
         this.resourceNeedService = resourceNeedService;
     }
@@ -30,7 +28,6 @@ public class ResourceNeedController {
         return ResponseEntity.ok(this.resourceNeedService.addRessource(resourceNeed,taskId));
     }
 
-    
     @PostMapping
     public ResponseEntity<ResourceNeed> postRessource(@RequestBody ResourceNeed resourceNeed){
         return ResponseEntity.ok(this.resourceNeedService.addRessource(resourceNeed,1L));
