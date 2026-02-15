@@ -1,4 +1,6 @@
 package com.smartsite.notification.rabbitmq;
+import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
+import org.springframework.amqp.support.converter.MessageConverter;
 
 import org.springframework.amqp.core.Binding;
 import org.springframework.amqp.core.BindingBuilder;
@@ -10,6 +12,7 @@ import org.springframework.context.annotation.Configuration;
 public class RabbitMQConfig {
     public static final String QUEUE_NAME="notification_queue";
     public static final String EXCHANGE_NAME="notification_exchange";
+    public static final String ROUTING_KEY = "routing.key";
 
     @Bean
     public Queue queue(){
@@ -25,4 +28,11 @@ public class RabbitMQConfig {
     public Binding binding(Queue queue, TopicExchange exchange) {
         return BindingBuilder.bind(queue).to(exchange).with("routing.key.#");
     }
+
+    
+    @Bean
+    public MessageConverter messageConverter() {
+        return new Jackson2JsonMessageConverter();
+    }
+
 }

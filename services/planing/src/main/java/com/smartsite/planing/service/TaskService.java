@@ -17,7 +17,7 @@ public class TaskService implements ITaskService {
 
     private final TaskRepository taskRepository;
     private final ProjectRepository projectRepository;
-
+    
     @Override
     public Task AddTAsk(Long projectId, Task task) {
         Project project = projectRepository.findById(projectId)
