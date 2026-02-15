@@ -9,5 +9,6 @@ public class RabbitMQConsumer {
     @RabbitListener(queues = RabbitMQConfig.QUEUE_NAME)
     public void listen(Object message) {
         System.out.println("Received message: " + message);
+    
     }
 }
