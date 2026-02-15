@@ -40,7 +40,7 @@ public class TaskAssigne {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name= "project_id",nullable = false)
      @JsonIgnore
-    private Project projectId;
+    private Project project;
 
 
     private Long workerId;

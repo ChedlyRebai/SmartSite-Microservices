@@ -32,7 +32,7 @@ public class TaskAssigneService implements ITaskAssigne {
 
         TaskAssigne savedTaskAssigne = taskAssigneRepository.save(taskAssigne);
         TaskAssigneEvent event = new TaskAssigneEvent(
-                taskAssigne.getProjectId().getId(), 
+                taskAssigne.getProject().getId(), 
                 task.getId(),
                 savedTaskAssigne.getWorkerId(),
                 task.getTitle(), task.getDescription());
