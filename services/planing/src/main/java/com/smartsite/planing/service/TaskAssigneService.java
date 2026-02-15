@@ -37,7 +37,6 @@ public class TaskAssigneService implements ITaskAssigne {
                 savedTaskAssigne.getWorkerId(),
                 task.getTitle(), task.getDescription());
         rabbitTemplate.convertAndSend(RabbitMQConfig.EXCHANGE_NAME, RabbitMQConfig.ROUTING_KEY, event);
-
         return savedTaskAssigne;
     }
 
