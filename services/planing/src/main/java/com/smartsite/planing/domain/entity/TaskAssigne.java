@@ -37,6 +37,12 @@ public class TaskAssigne {
 
     private LocalDate date;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name= "project_id",nullable = false)
+     @JsonIgnore
+    private Project projectId;
+
+
     private Long workerId;
     private Long teamId;
     

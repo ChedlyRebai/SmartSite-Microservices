@@ -10,6 +10,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class TaskAssigneEvent {
+    private Long projectId;
     private Long taskId;
     private Long workerId;
     private String title;

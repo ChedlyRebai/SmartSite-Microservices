@@ -2,10 +2,13 @@ package com.smartsite.planing.service;
 
 import java.util.List;
 
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.stereotype.Service;
 
 import com.smartsite.planing.domain.entity.Task;
 import com.smartsite.planing.domain.entity.TaskAssigne;
+import com.smartsite.planing.rabbitmq.RabbitMQConfig;
+import com.smartsite.planing.rabbitmq.TaskAssigneEvent;
 import com.smartsite.planing.repository.TaskAssigneRepository;
 import com.smartsite.planing.repository.TaskRepository;
 
@@ -17,6 +20,7 @@ public class TaskAssigneService implements ITaskAssigne {
 
     private final TaskAssigneRepository taskAssigneRepository;
     private final TaskRepository taskRepository;
+    private final RabbitTemplate rabbitTemplate;
 
     @Override
     public TaskAssigne create(Long taskId, TaskAssigne taskAssigne) {
@@ -26,7 +30,15 @@ public class TaskAssigneService implements ITaskAssigne {
 
         taskAssigne.setTask(task);
 
-        return taskAssigneRepository.save(taskAssigne);
+        TaskAssigne savedTaskAssigne = taskAssigneRepository.save(taskAssigne);
+        TaskAssigneEvent event = new TaskAssigneEvent(
+                taskAssigne.getProjectId().getId(), 
+                task.getId(),
+                savedTaskAssigne.getWorkerId(),
+                task.getTitle(), task.getDescription());
+        rabbitTemplate.convertAndSend(RabbitMQConfig.EXCHANGE_NAME, RabbitMQConfig.ROUTING_KEY, event);
+
+        return savedTaskAssigne;
     }
 
     @Override
