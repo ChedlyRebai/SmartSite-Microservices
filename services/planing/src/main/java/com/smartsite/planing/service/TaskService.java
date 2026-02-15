@@ -2,10 +2,12 @@ package com.smartsite.planing.service;
 
 import java.util.List;
 
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.stereotype.Service;
 
 import com.smartsite.planing.domain.entity.Project;
 import com.smartsite.planing.domain.entity.Task;
+import com.smartsite.planing.rabbitmq.RabbitMQConfig;
 import com.smartsite.planing.repository.ProjectRepository;
 import com.smartsite.planing.repository.TaskRepository;
 
@@ -17,12 +19,13 @@ public class TaskService implements ITaskService {
 
     private final TaskRepository taskRepository;
     private final ProjectRepository projectRepository;
-
+    private final RabbitTemplate rabbitTemplate;
     @Override
     public Task AddTAsk(Long projectId, Task task) {
         Project project = projectRepository.findById(projectId)
                 .orElseThrow(() -> new RuntimeException("Project not found"));
         task.setProject(project);
+        rabbitTemplate.convertAndSend(RabbitMQConfig.EXCHANGE_NAME,RabbitMQConfig.ROUTING_KEY,);;
         return taskRepository.save(task);
     }
 

@@ -24,7 +24,7 @@ public class NotificationController {
     }
     
     @GetMapping
-    public List<Notification> getMethodName(@RequestParam String param) {
+    public List<Notification> getMethodName() {
         return this.notificationRepository.findAll();
     }
     
