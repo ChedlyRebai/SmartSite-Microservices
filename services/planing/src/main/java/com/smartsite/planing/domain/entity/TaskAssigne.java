@@ -34,14 +34,14 @@ public class TaskAssigne {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    private String title;
+    private String description;
     private LocalDate date;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name= "project_id",nullable = false)
-     @JsonIgnore
+    @JsonIgnore
     private Project project;
-
 
     private Long workerId;
     private Long teamId;

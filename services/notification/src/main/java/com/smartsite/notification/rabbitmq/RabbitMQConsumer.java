@@ -8,7 +8,7 @@ public class RabbitMQConsumer {
 
     @RabbitListener(queues = RabbitMQConfig.QUEUE_NAME)
     public void handleTTaskAssignment(TaskAssigneEvent event) {
-        System.out.println("Received message: " + event.getTitle());
+        System.out.println("Received message: " + event.getTaskId() + " assigned to worker " + event.getWorkerId() + " for project " + event.getProjectId());
         
     }
 }
