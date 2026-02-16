@@ -1,6 +1,8 @@
 package com.smartsite.planing.domain.DTO;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.List;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -17,5 +19,14 @@ public class ProjectDTO {
     private String name;
     private String description;
     private LocalDate plannedStart;
-
+    private LocalDate plannedEnd;
+    private LocalDate actualStart;
+    private LocalDate acctualEnd;
+    private BigDecimal estimateBudget;
+    private BigDecimal actualBudget;
+    private Long chantierId;
+    private Long clientId;
+    private Long responsableId;
+    private List<Long> taskIds;
+    private List<Long> assignmentIds;
 }
